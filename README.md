@@ -45,9 +45,9 @@ The project follows a modular architecture with clear separation of concerns:
 
 2. The application will be available at `http://localhost:8000`
 
-3. Access the API documentation at `http://localhost:8000/docs`
+3. Access the API documentation at `http://localhost:8000/api/v1/docs`
 
-### Local Run
+### RabbitMQ Listener
 
 1. Run the RabbitMQ listener:
    ```bash
