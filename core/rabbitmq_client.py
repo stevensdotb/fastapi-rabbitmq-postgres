@@ -14,7 +14,7 @@ class RabbitMQClient:
 
     async def __aenter__(self):
         self.connection = await aio_pika.connect_robust(
-            settings.rabbitmq_url,
+            settings.rabbitmq_url.get_secret_value(),
         )
         self.channel = await self.connection.channel()
         await self.channel.set_qos(prefetch_count=5)

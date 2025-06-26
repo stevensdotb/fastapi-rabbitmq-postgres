@@ -20,5 +20,5 @@ class Database:
         async with self.SessionLocal() as session:
             yield session
 
-db = Database(settings.postgres_url)
+db = Database(settings.database_url.get_secret_value())
 Base = declarative_base()

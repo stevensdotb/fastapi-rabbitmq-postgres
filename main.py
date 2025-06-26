@@ -12,7 +12,7 @@ from core.settings import settings
 async def lifespan(app: FastAPI):
     try:
         async with db.engine.begin() as conn:
-            if settings.DEBUG:
+            if settings.debug:
                 await conn.run_sync(Base.metadata.drop_all)
             await conn.run_sync(Base.metadata.create_all)
         yield
@@ -33,4 +33,4 @@ app.include_router(router, prefix="/api/v1")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=settings.DEBUG)
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=settings.debug)
